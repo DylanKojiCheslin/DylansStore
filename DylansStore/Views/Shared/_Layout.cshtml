@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        <h1>
+        Electronics Warehouse</h1>
+        @if (Request.IsAuthenticated)
+        {
+            <div class="logout">
+                <h3>Hello @User.Identity.Name</h3>
+                &nbsp;
+                <a class ="button" href="@Url.Action("Logout",  "Account", new {returnURL = Request.Url.LocalPath})">Logout</a>
+
+            </div>
+        }
+        else
+        {
+            @Html.Partial("Login", new DylansStore.Models.Login())
+        }
+
+        <nav id='cssmenu'>
+            @Html.Action("navigation", "home")
+        </nav>
+    </header>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

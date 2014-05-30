@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DylansStore.Models.Category>
+
+<ul class="crumb">
+    <li>
+        <a href ="@Url.Action("index","home")">
+            Home
+        </a>
+         &nbsp;›&nbsp;
+        @foreach (var item in Model)
+        {
+            <li >
+                <a href="@Url.Action("byCategory", "Shop", new {id=item.CategoryID})">
+                    @item.Name
+                </a>
+                 &nbsp;›&nbsp;
+                </li>
+        }
+    </li>
+</ul>

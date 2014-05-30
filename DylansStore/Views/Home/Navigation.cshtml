@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DylansStore.Models.Category>
+
+
+<ul>
+    @foreach (var category in Model)
+
+    {
+        if (category.SubCategory.Any())
+        
+        {
+            <li class="has-sub"><a href="@Url.Action("byCategory", "Shop", new {id = category.CategoryID })">
+                @category.Name
+                </a>
+            @if (category.SubCategory.Any())
+            {
+                @Html.Partial("Navigation", category.SubCategory.OrderBy(x=> x.Name))
+            }
+            </li>
+        }
+
+        else
+        {
+            <li><a href="@Url.Action("byCategory", "Shop", new {id = category.CategoryID })">
+                @category.Name
+                </a>
+            </li>
+        }
+    } 
+
+</ul>

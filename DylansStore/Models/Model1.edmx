@@ -1,0 +1,847 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DylansStoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DylansStoreModelStoreContainer">
+          <EntitySet Name="Addresses" EntityType="DylansStoreModel.Store.Addresses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categorys" EntityType="DylansStoreModel.Store.Categorys" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customers" EntityType="DylansStoreModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Images" EntityType="DylansStoreModel.Store.Images" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderLines" EntityType="DylansStoreModel.Store.OrderLines" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="DylansStoreModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Payments" EntityType="DylansStoreModel.Store.Payments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products" EntityType="DylansStoreModel.Store.Products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Shipments" EntityType="DylansStoreModel.Store.Shipments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Suppliers" EntityType="DylansStoreModel.Store.Suppliers" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Addresses_Customers" Association="DylansStoreModel.Store.FK_Addresses_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categorys_Categorys" Association="DylansStoreModel.Store.FK_Categorys_Categorys">
+            <End Role="Categorys" EntitySet="Categorys" />
+            <End Role="Categorys1" EntitySet="Categorys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Products" Association="DylansStoreModel.Store.FK_Images_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLines_Orders" Association="DylansStoreModel.Store.FK_OrderLines_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderLines" EntitySet="OrderLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLines_Products" Association="DylansStoreModel.Store.FK_OrderLines_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderLines" EntitySet="OrderLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Addresses" Association="DylansStoreModel.Store.FK_Orders_Addresses">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Addresses1" Association="DylansStoreModel.Store.FK_Orders_Addresses1">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="DylansStoreModel.Store.FK_Orders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Payments" Association="DylansStoreModel.Store.FK_Orders_Payments">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Shipments" Association="DylansStoreModel.Store.FK_Orders_Shipments">
+            <End Role="Shipments" EntitySet="Shipments" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categorys" Association="DylansStoreModel.Store.FK_Products_Categorys">
+            <End Role="Categorys" EntitySet="Categorys" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Suppliers" Association="DylansStoreModel.Store.FK_Products_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="PostalCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Categorys">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ParentID" Type="int" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ImageURL" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="700" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderLines">
+          <Key>
+            <PropertyRef Name="OrderLineID" />
+          </Key>
+          <Property Name="OrderLineID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="SubTotal" Type="money" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ShippingAddressID" Type="int" />
+          <Property Name="BillingAddressID" Type="int" />
+          <Property Name="ShippingID" Type="int" />
+          <Property Name="PaymentID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="TotalPrice" Type="money" Nullable="false" />
+          <Property Name="SalesTax" Type="money" Nullable="false" />
+          <Property Name="SubTotal" Type="money" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateCompleted" Type="datetime" />
+          <Property Name="DateShiped" Type="datetime" />
+          <Property Name="DateCompleated" Type="datetime" />
+          <Property Name="ShippingCost" Type="money" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CCNumer" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CVC" Type="int" Nullable="false" />
+          <Property Name="CC_ExpireMonth" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="CC_ExpireYear" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="CardName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ConfirmationNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="QuantityStock" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="700" />
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shipments">
+          <Key>
+            <PropertyRef Name="ShipmentID" />
+          </Key>
+          <Property Name="ShipmentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TrackingNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Carrier" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Info" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="ImageURL" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_Addresses_Customers">
+          <End Role="Customers" Type="DylansStoreModel.Store.Customers" Multiplicity="0..1" />
+          <End Role="Addresses" Type="DylansStoreModel.Store.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categorys_Categorys">
+          <End Role="Categorys" Type="DylansStoreModel.Store.Categorys" Multiplicity="0..1" />
+          <End Role="Categorys1" Type="DylansStoreModel.Store.Categorys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorys">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Categorys1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Products">
+          <End Role="Products" Type="DylansStoreModel.Store.Products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Images" Type="DylansStoreModel.Store.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLines_Orders">
+          <End Role="Orders" Type="DylansStoreModel.Store.Orders" Multiplicity="1" />
+          <End Role="OrderLines" Type="DylansStoreModel.Store.OrderLines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderLines">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLines_Products">
+          <End Role="Products" Type="DylansStoreModel.Store.Products" Multiplicity="1" />
+          <End Role="OrderLines" Type="DylansStoreModel.Store.OrderLines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderLines">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Addresses">
+          <End Role="Addresses" Type="DylansStoreModel.Store.Addresses" Multiplicity="0..1" />
+          <End Role="Orders" Type="DylansStoreModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ShippingAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Addresses1">
+          <End Role="Addresses" Type="DylansStoreModel.Store.Addresses" Multiplicity="0..1" />
+          <End Role="Orders" Type="DylansStoreModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BillingAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Customers" Type="DylansStoreModel.Store.Customers" Multiplicity="0..1" />
+          <End Role="Orders" Type="DylansStoreModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Payments">
+          <End Role="Payments" Type="DylansStoreModel.Store.Payments" Multiplicity="0..1" />
+          <End Role="Orders" Type="DylansStoreModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Shipments">
+          <End Role="Shipments" Type="DylansStoreModel.Store.Shipments" Multiplicity="0..1" />
+          <End Role="Orders" Type="DylansStoreModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipments">
+              <PropertyRef Name="ShipmentID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ShippingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categorys">
+          <End Role="Categorys" Type="DylansStoreModel.Store.Categorys" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Products" Type="DylansStoreModel.Store.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorys">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Suppliers">
+          <End Role="Suppliers" Type="DylansStoreModel.Store.Suppliers" Multiplicity="1" />
+          <End Role="Products" Type="DylansStoreModel.Store.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetProductsByCategoryID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryID" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DylansStoreModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DylansStoreEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorys" EntityType="DylansStoreModel.Category" />
+          <EntitySet Name="Images" EntityType="DylansStoreModel.Image" />
+          <EntitySet Name="Products" EntityType="DylansStoreModel.Product" />
+          <EntitySet Name="Suppliers" EntityType="DylansStoreModel.Supplier" />
+          <AssociationSet Name="FK_Categorys_Categorys" Association="DylansStoreModel.FK_Categorys_Categorys">
+            <End Role="Category" EntitySet="Categorys" />
+            <End Role="Category1" EntitySet="Categorys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categorys" Association="DylansStoreModel.FK_Products_Categorys">
+            <End Role="Category" EntitySet="Categorys" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Products" Association="DylansStoreModel.FK_Images_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Suppliers" Association="DylansStoreModel.FK_Products_Suppliers">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <FunctionImport Name="GetProductsByCategoryID" EntitySet="Products" ReturnType="Collection(DylansStoreModel.Product)">
+          <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Addresses" EntityType="DylansStoreModel.Address" />
+          <EntitySet Name="Customers" EntityType="DylansStoreModel.Customer" />
+          <EntitySet Name="OrderLines" EntityType="DylansStoreModel.OrderLine" />
+          <EntitySet Name="Orders" EntityType="DylansStoreModel.Order" />
+          <EntitySet Name="Payments" EntityType="DylansStoreModel.Payment" />
+          <EntitySet Name="Shipments" EntityType="DylansStoreModel.Shipment" />
+          <AssociationSet Name="FK_Orders_Addresses" Association="DylansStoreModel.FK_Orders_Addresses">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Addresses1" Association="DylansStoreModel.FK_Orders_Addresses1">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="DylansStoreModel.FK_Orders_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLines_Orders" Association="DylansStoreModel.FK_OrderLines_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderLine" EntitySet="OrderLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLines_Products" Association="DylansStoreModel.FK_OrderLines_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderLine" EntitySet="OrderLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Payments" Association="DylansStoreModel.FK_Orders_Payments">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Shipments" Association="DylansStoreModel.FK_Orders_Shipments">
+            <End Role="Shipment" EntitySet="Shipments" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Addresses_Customers" Association="DylansStoreModel.FK_Addresses_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Type="Int32" Name="CategoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ParentID" />
+          <NavigationProperty Name="SubCategory" Relationship="DylansStoreModel.FK_Categorys_Categorys" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="ParentCategory" Relationship="DylansStoreModel.FK_Categorys_Categorys" FromRole="Category1" ToRole="Category" />
+          <NavigationProperty Name="Products" Relationship="DylansStoreModel.FK_Products_Categorys" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Type="Int32" Name="ImageID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImageURL" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="700" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="DylansStoreModel.FK_Images_Products" FromRole="Image" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Type="Int32" Name="ProductID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="QuantityStock" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="700" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SupplierID" Nullable="false" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="DylansStoreModel.FK_Products_Categorys" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Images" Relationship="DylansStoreModel.FK_Images_Products" FromRole="Product" ToRole="Image" />
+          <NavigationProperty Name="Supplier" Relationship="DylansStoreModel.FK_Products_Suppliers" FromRole="Product" ToRole="Supplier" />
+          <NavigationProperty Name="OrderLines" Relationship="DylansStoreModel.FK_OrderLines_Products" FromRole="Product" ToRole="OrderLine" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Type="Int32" Name="SupplierID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Info" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImageURL" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="DylansStoreModel.FK_Products_Suppliers" FromRole="Supplier" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Categorys_Categorys">
+          <End Type="DylansStoreModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="DylansStoreModel.Category" Role="Category1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categorys">
+          <End Type="DylansStoreModel.Category" Role="Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DylansStoreModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Products">
+          <End Type="DylansStoreModel.Product" Role="Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DylansStoreModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Suppliers">
+          <End Type="DylansStoreModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="DylansStoreModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetProductsByCategoryID_Result">
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
+          <Property Type="Int32" Name="QuantityStock" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="700" />
+          <Property Type="Int32" Name="SupplierID" Nullable="false" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Type="Int32" Name="AddressID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Address1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="State" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PostalCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CustomerID" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="DylansStoreModel.FK_Orders_Addresses" FromRole="Address" ToRole="Order" />
+          <NavigationProperty Name="Orders1" Relationship="DylansStoreModel.FK_Orders_Addresses1" FromRole="Address" ToRole="Order" />
+          <NavigationProperty Name="Customer" Relationship="DylansStoreModel.FK_Addresses_Customers" FromRole="Address" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="DylansStoreModel.FK_Orders_Customers" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="Addresses" Relationship="DylansStoreModel.FK_Addresses_Customers" FromRole="Customer" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="OrderLine">
+          <Key>
+            <PropertyRef Name="OrderLineID" />
+          </Key>
+          <Property Type="Int32" Name="OrderLineID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Int32" Name="OrderID" Nullable="false" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="SubTotal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Order" Relationship="DylansStoreModel.FK_OrderLines_Orders" FromRole="OrderLine" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="DylansStoreModel.FK_OrderLines_Products" FromRole="OrderLine" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Type="Int32" Name="OrderID" Nullable="false" />
+          <Property Type="Int32" Name="ShippingAddressID" />
+          <Property Type="Int32" Name="BillingAddressID" />
+          <Property Type="Int32" Name="ShippingID" />
+          <Property Type="Int32" Name="PaymentID" />
+          <Property Type="Int32" Name="CustomerID" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="SalesTax" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="DateCompleted" Precision="3" />
+          <Property Type="DateTime" Name="DateShiped" Precision="3" />
+          <Property Type="DateTime" Name="DateCompleated" Precision="3" />
+          <Property Type="Decimal" Name="ShippingCost" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ShippingAddress" Relationship="DylansStoreModel.FK_Orders_Addresses" FromRole="Order" ToRole="Address" />
+          <NavigationProperty Name="BillingAddress" Relationship="DylansStoreModel.FK_Orders_Addresses1" FromRole="Order" ToRole="Address" />
+          <NavigationProperty Name="Customer" Relationship="DylansStoreModel.FK_Orders_Customers" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderLines" Relationship="DylansStoreModel.FK_OrderLines_Orders" FromRole="Order" ToRole="OrderLine" />
+          <NavigationProperty Name="Payment" Relationship="DylansStoreModel.FK_Orders_Payments" FromRole="Order" ToRole="Payment" />
+          <NavigationProperty Name="Shipment" Relationship="DylansStoreModel.FK_Orders_Shipments" FromRole="Order" ToRole="Shipment" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Type="Int32" Name="PaymentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CCNumer" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CC_ExpireMonth" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CC_ExpireYear" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CardName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ConfirmationNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="DylansStoreModel.FK_Orders_Payments" FromRole="Payment" ToRole="Order" />
+          <Property Type="Int32" Name="CVC" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shipment">
+          <Key>
+            <PropertyRef Name="ShipmentID" />
+          </Key>
+          <Property Type="Int32" Name="ShipmentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TrackingNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Carrier" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="DylansStoreModel.FK_Orders_Shipments" FromRole="Shipment" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Orders_Addresses">
+          <End Type="DylansStoreModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="DylansStoreModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ShippingAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Addresses1">
+          <End Type="DylansStoreModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="DylansStoreModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="BillingAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Type="DylansStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="DylansStoreModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLines_Orders">
+          <End Type="DylansStoreModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="DylansStoreModel.OrderLine" Role="OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLines_Products">
+          <End Type="DylansStoreModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DylansStoreModel.OrderLine" Role="OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Payments">
+          <End Type="DylansStoreModel.Payment" Role="Payment" Multiplicity="0..1" />
+          <End Type="DylansStoreModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Shipments">
+          <End Type="DylansStoreModel.Shipment" Role="Shipment" Multiplicity="0..1" />
+          <End Type="DylansStoreModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipment">
+              <PropertyRef Name="ShipmentID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ShippingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Addresses_Customers">
+          <End Type="DylansStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="DylansStoreModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DylansStoreModelStoreContainer" CdmEntityContainer="DylansStoreEntities">
+          <EntitySetMapping Name="Categorys">
+            <EntityTypeMapping TypeName="DylansStoreModel.Category">
+              <MappingFragment StoreEntitySet="Categorys">
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="DylansStoreModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DylansStoreModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="QuantityStock" ColumnName="QuantityStock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="DylansStoreModel.Supplier">
+              <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetProductsByCategoryID" FunctionName="DylansStoreModel.Store.GetProductsByCategoryID">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="DylansStoreModel.Address">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="DylansStoreModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderLines">
+            <EntityTypeMapping TypeName="DylansStoreModel.OrderLine">
+              <MappingFragment StoreEntitySet="OrderLines">
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderLineID" ColumnName="OrderLineID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="DylansStoreModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ShippingCost" ColumnName="ShippingCost" />
+                <ScalarProperty Name="DateCompleated" ColumnName="DateCompleated" />
+                <ScalarProperty Name="DateShiped" ColumnName="DateShiped" />
+                <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="SalesTax" ColumnName="SalesTax" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="ShippingID" ColumnName="ShippingID" />
+                <ScalarProperty Name="BillingAddressID" ColumnName="BillingAddressID" />
+                <ScalarProperty Name="ShippingAddressID" ColumnName="ShippingAddressID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="DylansStoreModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="CVC" ColumnName="CVC" />
+                <ScalarProperty Name="ConfirmationNumber" ColumnName="ConfirmationNumber" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="CC_ExpireYear" ColumnName="CC_ExpireYear" />
+                <ScalarProperty Name="CC_ExpireMonth" ColumnName="CC_ExpireMonth" />
+                <ScalarProperty Name="CCNumer" ColumnName="CCNumer" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shipments">
+            <EntityTypeMapping TypeName="DylansStoreModel.Shipment">
+              <MappingFragment StoreEntitySet="Shipments">
+                <ScalarProperty Name="Carrier" ColumnName="Carrier" />
+                <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f55ee33972ca4ba9b4c2bfe7b503d1c3" Name="Diagram1" ZoomLevel="105">
+        <EntityTypeShape EntityType="DylansStoreModel.Category" Width="1.5" PointX="1.25" PointY="4.375" />
+        <EntityTypeShape EntityType="DylansStoreModel.Image" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="DylansStoreModel.Product" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DylansStoreModel.Supplier" Width="1.5" PointX="0.75" PointY="1.5" />
+        <AssociationConnector Association="DylansStoreModel.FK_Categorys_Categorys" />
+        <AssociationConnector Association="DylansStoreModel.FK_Products_Categorys" />
+        <AssociationConnector Association="DylansStoreModel.FK_Images_Products" />
+        <AssociationConnector Association="DylansStoreModel.FK_Products_Suppliers" />
+        <EntityTypeShape EntityType="DylansStoreModel.Address" Width="1.5" PointX="8.0067712552877" PointY="30.580921425754635" />
+        <EntityTypeShape EntityType="DylansStoreModel.Customer" Width="1.5" PointX="10.401161837578361" PointY="21.00375998998236" />
+        <EntityTypeShape EntityType="DylansStoreModel.OrderLine" Width="1.5" PointX="4.6555929634047635" PointY="21.472487042412389" />
+        <EntityTypeShape EntityType="DylansStoreModel.Order" Width="1.5" PointX="5.1368712713647966" PointY="23.796266522163648" />
+        <EntityTypeShape EntityType="DylansStoreModel.Payment" Width="1.5" PointX="1.2035122705639862" PointY="11.997052362187324" />
+        <EntityTypeShape EntityType="DylansStoreModel.Shipment" Width="1.5" PointX="6.8644168818669478" PointY="8.5254511723879034" />
+        <AssociationConnector Association="DylansStoreModel.FK_Orders_Addresses" />
+        <AssociationConnector Association="DylansStoreModel.FK_Orders_Addresses1" />
+        <AssociationConnector Association="DylansStoreModel.FK_Orders_Customers" />
+        <AssociationConnector Association="DylansStoreModel.FK_OrderLines_Orders" />
+        <AssociationConnector Association="DylansStoreModel.FK_OrderLines_Products" />
+        <AssociationConnector Association="DylansStoreModel.FK_Orders_Payments" />
+        <AssociationConnector Association="DylansStoreModel.FK_Orders_Shipments" />
+        <AssociationConnector Association="DylansStoreModel.FK_Addresses_Customers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

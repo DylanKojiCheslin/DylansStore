@@ -1,0 +1,43 @@
+﻿@model DylansStore.Models.Product
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+<div>
+    
+<h2>@Model.Name</h2>
+</div>
+ 
+<div class="ProductDetail">
+   
+        <img src="tv.jpg"/>
+    <br />
+    <br />
+    <span>@Model.Name</span>
+    <br />
+    <br />
+    <span>@Model.Price.ToString("C");</span>
+        </div>
+    <div class="ProductDetailImageHolder">
+    </div>
+    <div>
+        @using (Html.BeginForm()) 
+        { 
+            <span> Quantity</span>
+            <input type ="number" style ="width:3em" name="qty"/>
+            <input type ="hidden" name="price" value="@Model.Price" />
+            <br />
+            <button type="submit">Add To Cart</button>
+        }
+    </div>
+
+</div>
+
+
+@*
+  Name
+  Price
+  QuantityStock
+Description
+        SupplierID
+        CategoryID*@

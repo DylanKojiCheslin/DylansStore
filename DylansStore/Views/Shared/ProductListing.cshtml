@@ -1,0 +1,15 @@
+﻿@model DylansStore.Models.Product
+
+<div class="ProductListing">
+    <a href="@Url.Action("ProductDetail", "Shop", new {id =Model.ProductID })"><div class="ProductDetailTextHolder">
+    <div ">
+    <img src="tv.jpg"/>
+    <br />
+    <br />
+    <span>@Model.Name</span>
+    <br />
+    <br />
+    <span>@Model.Price.ToString("C");</span>
+    </div>
+        </a>    
+</div>

@@ -1,0 +1,18 @@
+﻿@model DylansStore.Models.Category
+
+@{
+    ViewBag.Title = "byCategory";
+}
+
+<h2>Browsing @Model.Name Products</h2>
+<div>
+@Html.Action("Breadcrumbs", "home", new{id = Model.CategoryID})
+</div>
+<br />
+<div>
+@foreach (var product in Model.Allproducts)
+{
+    <span>@Html.Partial("productListing", product)
+    </span>
+}
+    </div>

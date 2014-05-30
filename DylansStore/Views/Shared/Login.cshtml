@@ -1,0 +1,50 @@
+﻿@model DylansStore.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Login</legend>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PassWord)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PassWord)
+            @Html.ValidationMessageFor(model => model.PassWord)
+            @Html.Hidden("returnURL", Request.Url.LocalPath)
+        </div>
+
+        <p>
+            <input type="submit" value="Login" />
+        <br />
+        <a href="@Url.Action("Register","Account")">
+        Not Registered - Click Here!
+        </a>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+}

@@ -1,0 +1,18 @@
+﻿@model DylansStore.Models.Order
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Your Cart</h2>
+
+@foreach(var orderline in Model.OrderLines){
+    <div class="Cart">
+        @orderline.Product.Name
+        @orderline.Quantity x 
+        @orderline.UnitPrice.ToString("C") = 
+        @orderline.SubTotal.GetValueOrDefault().ToString("C")
+        @*proceed to check out*@
+    </div>
+    
+}
